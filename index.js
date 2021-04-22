@@ -23,6 +23,7 @@ client.on('guildMemberAdd', guildMember => {
     let welcomeRole = guildMember.guild.roles.cache.find(role => role.name === '(💎) Nowy Minecrafter')
 
     guildMember.roles.add(welcomeRole)
+    guildMember.guild.channels.cache.get('814032918460366902').send('Witaj w klasie 7 <@${guildMember.user.id}>')
 })
 
 client.on('message', message => {
