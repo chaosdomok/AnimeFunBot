@@ -16,8 +16,13 @@ for (const file of commandFiles) {
     client.commands.set(command.name, command)
 }
 
-client.once('ready', () => {
+client.on('ready', () => {
     console.log('AnimeFunBot jest online!')
+})
+client.on('guildMemberAdd', guildMember => {
+    let welcomeRole = guildMember.guild.roles.cache.find(role => role.name === '(💎) Nowy Minecrafter')
+
+    guildMember.roles.add(welcomeRole)
 })
 
 client.on('message', message => {
