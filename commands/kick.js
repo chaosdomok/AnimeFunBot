@@ -1,6 +1,6 @@
 module.exports = {
     name: 'kick',
-    description: "Komenda wyrzucająca członków!",
+    description: "Komenda która wyrzuca użytkowników!",
     execute(message, args) {
         const member = message.mentions.users.first()
         if (member) {
@@ -8,7 +8,7 @@ module.exports = {
             memberTarger.kick()
             message.channel.send("Użytkownik został wyrzucony")
         } else {
-            message.channel.send('Nie możesz wyrzucić tego członka')
+            message.channel.send("Nie możesz wyrzucić tego użytkownika")
         }
     }
 }
