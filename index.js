@@ -7,8 +7,9 @@ const prefix = '-'
 const fs = require('fs')
 const { cpuUsage } = require('process')
 
+const memberCounter = require('./counters/member-counter')
+
 client.commands = new Discord.Collection()
-client.categories = fs.readdirSync("./commands/")
 
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'))
 for (const file of commandFiles) {
@@ -19,12 +20,7 @@ for (const file of commandFiles) {
 
 client.on('ready', () => {
     console.log('AnimeFunBot jest online!')
-})
-client.on('guildMemberAdd', guildMember => {
-    let welcomeRole = guildMember.guild.roles.cache.find(role => role.name === '(💎) Nowy Minecrafter')
-
-    guildMember.roles.add(welcomeRole)
-    guildMember.guild.channels.cache.get('814032918460366902').send('Witaj w klasie 7 <@${guildMember.user.id}>')
+    memberCounter(client)
 })
 
 client.on('message', message => {
@@ -41,9 +37,6 @@ client.on('message', message => {
     }
     if (command === 'kick') {
         client.commands.get('kick').execute(message, args)
-    }
-    if (command === 'help') {
-        client.commands.get('help').execute(message, args)
     }
 })
 
