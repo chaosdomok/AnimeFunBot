@@ -8,6 +8,7 @@ const fs = require('fs')
 const { cpuUsage } = require('process')
 
 client.commands = new Discord.Collection()
+client.categories = fs.readdirSync("./commands/")
 
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'))
 for (const file of commandFiles) {
@@ -40,6 +41,9 @@ client.on('message', message => {
     }
     if (command === 'kick') {
         client.commands.get('kick').execute(message, args)
+    }
+    if (command === 'help') {
+        client.commands.get('help').execute(message, args)
     }
 })
 
