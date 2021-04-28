@@ -3,10 +3,13 @@ require('dotenv').config()
 module.exports = (Discord, client, message) => {
     if (message.author.bot || message.channel.type === "dm") return
     if (message.channel.id === "835214263143497752") {
-        fetch(`https://api.monkedev.com/fun/chat?msg=${message.content}&uid=${message.author.id}&key=0sJZn9q2vhOz4pETsEzWtDsCtUXaCPsK`)
+        fetch(`https://api.monkedev.com/fun/chat?key=0sJZn9q2vhOz4pETsEzWtDsCtUXaCPsK`)
             .then(response => response.json())
             .then(data => {
                 message.channel.send(data.response)
+            })
+            .catch(() => {
+                message.channel.send('Nie udało się pobrać odpowiedzi')
             })
     }
 
