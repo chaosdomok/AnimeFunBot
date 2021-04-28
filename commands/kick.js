@@ -1,7 +1,7 @@
 module.exports = {
     name: 'kick',
     description: "Komenda która wyrzuca użytkowników!",
-    execute(message, args) {
+    execute(client, message, args) {
         const member = message.mentions.users.first()
         if (member) {
             const memberTarger = message.guild.members.cache.get(member.id)

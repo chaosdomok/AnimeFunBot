@@ -1,7 +1,7 @@
 module.exports = {
     name: 'clear',
     description: "Komenda usuwająca wiadomości!",
-    async execute(message, args) {
+    async execute(client, message, args) {
         if (!args[0]) return message.reply("Prosze podać liczbe wiadomości do usunięcia!")
         if (isNaN(args[0])) return message.reply("Proszę podać prawdziwą liczbe!")
 
