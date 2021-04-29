@@ -6,10 +6,12 @@ module.exports = (Discord, client, message) => {
     if (!message.content.startsWith(prefix) || message.author.bot) return
 
     const args = message.content.slice(prefix.length).split(/ +/)
-    fetch(`http://clerverbot.luxbot.ml:44236/${args.join('835214263143497752')[1]}`)
-        .then(response => {
-            console.log(response.opd);
-        });
+    if (message.channel.id === "835214263143497752") {
+        fetch(`http://clerverbot.luxbot.ml:44236/${args.join('745519298344386602')[1]}`)
+            .then(response => {
+                console.log(response.opd);
+            });
+    }
     const cmd = args.shift().toLowerCase()
 
     const command = client.commands.get(cmd)
