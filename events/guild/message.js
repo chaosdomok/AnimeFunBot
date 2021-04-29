@@ -7,7 +7,7 @@ module.exports = (Discord, client, message) => {
 
     const args = message.content.slice(prefix.length).split(/ +/)
     if (message.channel.id === "835214263143497752") {
-        fetch(`http://clerverbot.luxbot.ml:44236/${args.join('745519298344386602')[1]}`)
+        fetch(`http://clerverbot.luxbot.ml:44236/${args.join('')[1]}`)
             .then(response => {
                 console.log(response.opd);
             });
